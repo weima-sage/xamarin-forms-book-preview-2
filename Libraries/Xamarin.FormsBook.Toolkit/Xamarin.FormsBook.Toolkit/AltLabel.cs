@@ -1,16 +1,14 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
 
 namespace Xamarin.FormsBook.Toolkit
 {
+    using static Xamarin.FormsBook.Toolkit.BindableObjectHelpers<AltLabel>;
+
     public class AltLabel : Label
     {
-        public static readonly BindableProperty PointSizeProperty =
-            BindableProperty.Create("PointSize",        // propertyName
-                                    typeof(double),     // returnType
-                                    typeof(AltLabel),   // declaringType
-                                    8.0,                // defaultValue
-                                    propertyChanged: OnPointSizeChanged);
+        public static readonly BindableProperty PointSizeProperty = 
+            Create<double>(l => l.PointSize, 8, OnPointSizeChanged);
 
         public AltLabel()
         {
@@ -23,15 +21,10 @@ namespace Xamarin.FormsBook.Toolkit
             get { return (double)GetValue(PointSizeProperty); }
         }
 
-        static void OnPointSizeChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            ((AltLabel)bindable).OnPointSizeChanged((double)oldValue, (double)newValue);
-        }
+        static void OnPointSizeChanged(AltLabel bindable, double oldValue, double newValue) =>
+            bindable.OnPointSizeChanged(oldValue, newValue);
 
-        void OnPointSizeChanged(double oldValue, double newValue)
-        {
-            SetLabelFontSize(newValue);
-        }
+        void OnPointSizeChanged(double oldValue, double newValue) => SetLabelFontSize(newValue);
 
         void SetLabelFontSize(double pointSize)
         {
