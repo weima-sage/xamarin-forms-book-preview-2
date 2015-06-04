@@ -7,8 +7,8 @@ namespace Xamarin.FormsBook.Toolkit
 
     public class AltLabel : Label
     {
-        public static readonly BindableProperty PointSizeProperty = 
-            Create<double>(l => l.PointSize, 8, OnPointSizeChanged);
+        public static readonly BindableProperty PointSizeProperty =
+            CreateProperty<double>(l => l.PointSize, 8, OnPointSizeChanged);
 
         public AltLabel()
         {

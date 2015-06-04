@@ -4,13 +4,11 @@ using Xamarin.Forms;
 
 namespace Xamarin.FormsBook.Toolkit
 {
+    using static BindableObjectHelpers<CountedLabel>;
     public class CountedLabel : Label
     {
         static readonly BindablePropertyKey WordCountKey =
-            BindableProperty.CreateReadOnly("WordCount",            // propertyName
-                                            typeof(int),            // returnType
-                                            typeof(CountedLabel),   // declaringType
-                                            0);                     // defaultValue
+            CreateReadOnlyProperty<int>(l=>l.WordCount, 0);
 
         public static readonly BindableProperty WordCountProperty = WordCountKey.BindableProperty;
 
@@ -19,16 +17,9 @@ namespace Xamarin.FormsBook.Toolkit
             // Set the WordCount property when the Text property changes.
             PropertyChanged += (object sender, PropertyChangedEventArgs args) =>
                 {
-                    if (args.PropertyName == "Text")
+                    if (args.PropertyName == nameof(Label.Text))
                     {
-                        if (String.IsNullOrEmpty(Text))
-                        {
-                            WordCount = 0;
-                        }
-                        else
-                        {
-                            WordCount = Text.Split(' ', '-', '\u2014').Length;
-                        }
+                        WordCount = Text ?. Split(' ', '-', '\u2014').Length ?? 0;
                     }
                 };
         }
