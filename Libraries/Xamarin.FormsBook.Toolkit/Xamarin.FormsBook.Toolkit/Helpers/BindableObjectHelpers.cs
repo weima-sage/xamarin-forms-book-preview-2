@@ -8,6 +8,9 @@ namespace Xamarin.FormsBook.Toolkit
 {
     public delegate Action<PT,PT> Updator<T,PT>(T arg) where T:BindableObject;
 
+    public delegate BindableProperty.BindingPropertyChangedDelegate<PT>
+                       PropertyChanged<T,PT>(Updator<T,PT> propertyUpdator) where T:BindableObject;
+                       
     public static class BindableObjectHelpers<T> where T:BindableObject
     {
         public static BindableProperty CreateProperty<PT>

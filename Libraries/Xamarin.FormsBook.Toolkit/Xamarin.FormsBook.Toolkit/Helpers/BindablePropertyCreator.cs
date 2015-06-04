@@ -8,9 +8,6 @@ namespace Xamarin.FormsBook.Toolkit
 {
     public static class BindablePropertyCreator<T,PT> where T:BindableObject
     {
-        delegate BindableProperty.BindingPropertyChangedDelegate<PT>
-                    PropertyChanged(Updator<T,PT> propertyUpdator);
-
         public static BindableProperty Create(
             Expression<Func<T, PT>> propertyGetter,
             PT defaultValue,
@@ -20,8 +17,9 @@ namespace Xamarin.FormsBook.Toolkit
                 propertyChanged: GetPropertyChanged(propertyUpdator));
         }
 
-        private static PropertyChanged GetPropertyChanged =
+        private static PropertyChanged<T,PT> GetPropertyChanged =
             updator =>
-                (bo, oldVal, newVal) => updator ?. Invoke(bo as T)(oldVal, newVal);
+                (bo, oldVal, newVal) =>
+                    updator ?. Invoke(bo as T)(oldVal, newVal);
     }
 }
