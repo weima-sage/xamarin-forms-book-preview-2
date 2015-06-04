@@ -6,11 +6,13 @@ using System.Reflection;
 
 namespace Xamarin.FormsBook.Toolkit
 {
+    public delegate Action<PT,PT> Updator<T,PT>(T arg) where T:BindableObject;
+
     public static class BindableObjectHelpers<T> where T:BindableObject
     {
         public static BindableProperty CreateProperty<PT>
            (Expression<Func<T, PT>> propertyGetter, PT defaultValue,
-            Func<T,Action<PT,PT>> propertyChanged = null) =>
+            Updator<T,PT> propertyChanged = null) =>
                 BindablePropertyCreator<T,PT>.Create(propertyGetter, defaultValue, propertyChanged);
 
         public static BindablePropertyKey CreateReadOnlyProperty<PT>
