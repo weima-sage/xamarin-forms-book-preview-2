@@ -12,10 +12,10 @@
     </ContentPage.Padding>
 
     <StackLayout x:Name="stackLayout">
-        <toolkit:AltLabel Text="Text of 4 points" PointSize="4" />
+        <toolkit:AltLabel Text="Text of 4 points" PointSiz="4" />
         <toolkit:AltLabel Text="Text of 5 points" PointSize="5" />
         <toolkit:AltLabel Text="Text of 6 points" PointSize="6" />
-        <toolkit:AltLabel Text="Text of 7 points" PointSize="7" />
+        <toolkit:AltLabel Text="Text of 7 points" PointSiz="7" />
         <toolkit:AltLabel Text="Text of 8 points" PointSize="8" />
         <toolkit:AltLabel Text="Text of 9 points" PointSize="9" />
         <toolkit:AltLabel Text="Text of 10 points" PointSize="10" />
