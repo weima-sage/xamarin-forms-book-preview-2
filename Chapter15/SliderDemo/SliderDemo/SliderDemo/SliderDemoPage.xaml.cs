@@ -10,9 +10,7 @@ namespace SliderDemo
             InitializeComponent();
         }
 
-        void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
-        {
-            label.Text = String.Format("Slider = {0}", args.NewValue);
-        }
+        void OnSliderValueChanged(object sender, ValueChangedEventArgs args) =>
+            label ?. SetValue(Label.TextProperty, $"Slider = {args.NewValue:F2}");
     }
 }
