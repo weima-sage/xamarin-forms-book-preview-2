@@ -24,7 +24,7 @@ namespace BindingSourceCode
             Binding binding = new Binding
             {
                 Source = slider,
-                Path = "Value"
+                Path = nameof(Slider.Value)
             };
 
             // Bind the Opacity property of the Label to the source.
