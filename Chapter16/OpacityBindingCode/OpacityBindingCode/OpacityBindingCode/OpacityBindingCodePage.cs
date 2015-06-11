@@ -24,7 +24,7 @@ namespace OpacityBindingCode
             label.BindingContext = slider;
 
             // Bind the properties: target is Opacity; source is Value.
-            label.SetBinding(Label.OpacityProperty, "Value");
+            label.SetBinding(Label.OpacityProperty, nameof(Slider.Value));
 
             // Construct the page.
             Padding = new Thickness(10, 0);

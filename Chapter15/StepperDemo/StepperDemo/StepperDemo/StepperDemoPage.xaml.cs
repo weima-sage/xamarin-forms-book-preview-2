@@ -17,7 +17,7 @@ namespace StepperDemo
         {
             Stepper stepper = (Stepper)sender;
             button.BorderWidth = stepper.Value;
-            label.Text = stepper.Value.ToString("F0");
+            label.Text = $"{stepper.Value:F0}";
         }
     }
 }

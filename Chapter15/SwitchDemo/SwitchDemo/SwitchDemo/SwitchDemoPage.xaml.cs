@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace SwitchDemo
 {
@@ -10,28 +11,15 @@ namespace SwitchDemo
             InitializeComponent();
         }
 
-        void OnItalicSwitchToggled(object sender, ToggledEventArgs args)
-        {
-            if (args.Value)
-            {
-                label.FontAttributes |= FontAttributes.Italic;
-            }
-            else
-            {
-                label.FontAttributes &= ~FontAttributes.Italic;
-            }
-        }
+        private void ToggleAttribute(bool isOn, FontAttributes input) =>
+           (isOn ? AddAttributes : RemoveAttributes).Invoke(input);
 
-        void OnBoldSwitchToggled(object sender, ToggledEventArgs args)
-        {
-            if (args.Value)
-            {
-                label.FontAttributes |= FontAttributes.Bold;
-            }
-            else
-            {
-                label.FontAttributes &= ~FontAttributes.Bold;
-            }
-        }
+        private Action<FontAttributes> RemoveAttributes => input => label.FontAttributes &= ~input;
+        private Action<FontAttributes> AddAttributes => input => label.FontAttributes |= input;
+
+        void OnItalicSwitchToggled(object sender, ToggledEventArgs args) =>
+                                ToggleAttribute(args.Value, FontAttributes.Italic);
+        void OnBoldSwitchToggled(object sender, ToggledEventArgs args) =>
+                                ToggleAttribute(args.Value, FontAttributes.Bold);
     }
 }

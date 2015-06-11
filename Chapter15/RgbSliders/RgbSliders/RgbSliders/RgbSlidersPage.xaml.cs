@@ -18,7 +18,7 @@ namespace RgbSliders
                 Slider = slider;
                 Prefix = prefix;
             }
-            public void UpdateValue() => Label.Text = $"{Prefix} {Slider.Value :F2}";
+            public void UpdateValue() => Label.Text = $"{Prefix} {(int)Slider.Value:X2}";
         }
 
         private IList<BundledColorChoice> Choices{ get; }
