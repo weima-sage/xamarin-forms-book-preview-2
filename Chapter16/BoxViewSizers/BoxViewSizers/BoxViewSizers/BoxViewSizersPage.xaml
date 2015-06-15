@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BoxViewSizers.BoxViewSizersPage"
              Padding="10, 0">
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="BoxView">
@@ -21,7 +21,7 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand">
             <BoxView WidthRequest="{Binding Source={x:Reference slider},
@@ -32,7 +32,8 @@
         <StackLayout VerticalOptions="CenterAndExpand">
             <BoxView x:Name="boxView1" />
             <Slider Value="{Binding Source={x:Reference boxView1},
-                                    Path=WidthRequest}" />
+                                    Path=WidthRequest,
+                                    Mode=TwoWay}" />
         </StackLayout>
 
         <StackLayout VerticalOptions="CenterAndExpand">
